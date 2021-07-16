@@ -1,0 +1,71 @@
+version: "2.0"
+
+nlu:
+- intent: talk_greet
+  examples: |
+    - chào
+    - xin chào
+    - chào bạn
+    - chào buổi sáng
+    - chào buổi chiều
+    - ê
+    - alo
+    - chào bot
+    - chào bạn
+
+- intent: talk_goodbye
+  examples: |
+    - xin chào bạn
+    - bye
+    - tạm biệt
+    - hẹn gặp lại
+    
+
+- intent: talk_affirm
+  examples: |
+    - có
+    - được
+    - tôi đồng ý
+    - tất nhiên
+    - cũng được
+    - vậy đi
+
+- intent: talk_deny
+  examples: |
+    - không
+    - không được
+    - không đồng ý
+    - không chịu
+
+
+- intent: mood_great
+  examples: |
+    - tuyệt vời
+    - rất vui
+    - hài lòng
+    - ngày hôm nay thật đẹp
+    - haha
+    - hihi
+    - kkkk
+    - vui quá
+
+
+- intent: mood_unhappy
+  examples: |
+    - chán
+    - tôi không vui
+    - buồn quá
+    - cảm thấy chán
+    - tệ quá
+    - ngày tồi tệ
+    - thất vọng
+    - không vui
+
+
+- intent: bot_challenge
+  examples: |
+    - bạn là ai?
+    - bạn là gì
+    - nói về bản thân bạn đi
+    
+

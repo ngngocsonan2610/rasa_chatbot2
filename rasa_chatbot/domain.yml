@@ -1,0 +1,96 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- user_deny:
+    use_entities: true
+- user_affirm:
+    use_entities: true
+- user_greet:
+    use_entities: true
+- user_bye:
+    use_entities: true
+- ask_pnr:
+    use_entities: true
+- ask_pid:
+    use_entities: true
+- inform_pid:
+    use_entities: true
+- inform_pnr:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+entities:
+- datetime
+- no_pnr
+- no_pid
+slots:
+  no_pnr:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  no_pid:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - buttons:
+    - payload: /ask_pnr
+      title: Thông tin chuyến bay
+    - payload: /ask_pid
+      title: Dữ liệu cá nhân
+    text: Chào bạn! Tôi là ViJe, tôi có thể hỗ trợ bạn ...
+  utter_request_pnr:
+  - text: Hãy nhập Mã chuyến bay PNR gồm 6 ký tự (vd:1A2B3C,A1B2C3)
+  utter_request_pid:
+  - text: Hãy nhập mã số cá nhân, CMND (vd:123456789,123567890)
+  utter_resp_input_success:
+  - text: 'Nhập thành công: {input}. Kết quả tra cứu là: {output}'
+  utter_resp_input_failure:
+  - text: Không nhận được input
+  utter_is_good:
+  - text: Bạn có hài lòng với kết quả không?
+  - text: Kết quả có giúp bạn không?
+  - text: Kết quả có đúng với câu hỏi của bạn?
+  utter_howareyou:
+  - text: Chào bạn! Bạn đang thế nào?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: Tôi có điều này, mong bạn sẽ khá hơn
+  utter_happy:
+  - text: Tuyệt, tôi rất vui được giúp bạn!
+  - text: Nice, cứ hỏi tôi khi cần nhé!
+  utter_sr:
+  - text: Xin lỗi vì kết quả, hãy thử lại !
+  utter_iamabot:
+  - text: Tôi là người máy, phát triển bởi Rasa-G1.
+  utter_bye:
+  - text: Chào tạm biệt
+  utter_fallback:
+  - text: Rất xin lỗi, nhưng tôi không hiểu ý bạn.
+actions:
+- action_resp_input
+forms:
+  no_pnr_form:
+    required_slots:
+      no_pnr:
+      - entity: no_pnr
+        intent: inform_pnr
+        type: from_entity
+  no_pid_form:
+    required_slots:
+      no_pid:
+      - entity: no_pid
+        intent: inform_pid
+        type: from_entity
+e2e_actions: []

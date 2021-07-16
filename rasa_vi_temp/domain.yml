@@ -1,0 +1,34 @@
+version: "2.0"
+
+intents:
+  - talk_greet
+  - talk_goodbye
+  - talk_affirm
+  - talk_deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+responses:
+  utter_greet:
+  - text: "Hey! Bạn thế nào?"
+
+  utter_cheer_up:
+  - text: "Tôi có điều này có thể khiến bạn vui:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Nó có giúp bạn không"
+
+  utter_happy:
+  - text: "Tuyệt vời, cố lên nhé!"
+
+  utter_goodbye:
+  - text: "Chào bạn"
+
+  utter_iamabot:
+  - text: "Tôi là người máy, sản xuất bơi Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

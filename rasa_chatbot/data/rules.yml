@@ -1,0 +1,72 @@
+version: "2.0"
+
+rules:
+
+- rule: user says hi
+  steps:
+  - intent: user_greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: user_bye
+  - action: utter_bye
+
+- rule: Say I am a bot anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: good case
+  steps:
+  - action: utter_is_good
+  - intent: user_affirm
+  - action: utter_happy
+
+- rule: bad case
+  steps:
+  - action: utter_is_good
+  - intent: user_deny
+  - action: utter_sr
+
+# MOOD
+- rule: good case
+  steps:
+  - intent: mood_unhappy
+  - action: utter_howareyou
+  - action: utter_cheer_up
+  - action: utter_is_good
+
+
+# CHECK PNR
+- rule: inform_pid 
+  steps:
+  - intent: inform_pnr
+  - action: action_resp_input
+  - action: utter_is_good
+  # wait_for_user_input: false
+
+- rule:  inform_pnr
+  condition: 
+  - active_loop: no_pnr_form  
+  steps:
+  - action: no_pnr_form
+  - active_loop: null 
+  - action: action_resp_input 
+  - action: utter_is_good
+
+# CHECK PID
+- rule: inform_pid
+  steps:
+  - intent: inform_pid
+  - action: action_resp_input
+  - action: utter_is_good
+
+- rule: inform_pid
+  condition: 
+  - active_loop: no_pid_form  
+  steps:
+  - action: no_pid_form
+  - active_loop: null 
+  - action: action_resp_input 
+  - action: utter_is_good

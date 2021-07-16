@@ -1,0 +1,92 @@
+version: "2.0"
+nlu:
+- intent: user_greet
+  examples: |
+    - hello
+    - hi
+    - alo
+    - ê
+    - chào đằng ấy
+    - chào bạn
+    - chào bot
+    - hey dude
+    - chào [buổi tối](datetime)
+    - chào [buổi sáng](datetime)
+    - chaof
+    - chào
+    - hhi
+- intent: user_bye
+  examples: |
+    - goodbye
+    - tắt đi
+    - chào tạm biệt
+    - bye bye
+    - hẹn gặp lại
+- intent: user_affirm
+  examples: |
+    - gửi đi
+    - được đó
+    - tất nhiên được
+    - có
+    - oke bạn
+    - đồng ý
+- intent: user_deny
+  examples: |
+    - no
+    - đừng
+    - không thích
+    - không nhé
+    - không được
+    - thôi
+    - không
+- intent: ask_pnr
+  examples: |
+    - thông tin chuyến bay
+    - tìm thông tin chuyến bay
+    - tra cứu thông tin chuyến bay
+    - cập nhật chuyến bay
+- intent: ask_pid
+  examples: |
+    - tra cứu thông tin cá nhân
+    - dữ liệu cá nhân
+    - tìm thông tin cá nhân
+- intent: inform_pnr
+  examples: |
+    - số pnr của tôi là [ABC123](no_pnr)
+    - pnr là [1ABCDS](no_pnr)
+    - [2A3C5S](no_pnr)
+    - pnr : [5ABNSD](no_pnr)
+    - tìm pnr [1A2B3C](no_pnr)
+    - [1A2B3C](no_pnr)
+    - [A1B2C3](no_pnr)
+- intent: inform_pid
+  examples: |
+    - số pid của tôi là [123678234](no_pid)
+    - id là [123567888](no_pid)
+    - [123567888](no_pid)
+    - cmnd là [887128935](no_pid)
+    - tìm pid [123456789](no_pid)
+- intent: mood_great
+  examples: |
+    - tuyệt vời
+    - tôi thấy được đó
+    - tối thấy đẹp lắm
+    - nó thật hoàn hảo
+    - thật tuyệt
+- intent: mood_unhappy
+  examples: |
+    - hôm nay thật tồi tệ
+    - tôi thấy chán
+    - buồn quá
+    - tôi thấy buồn
+    - buồn
+    - chán quá
+- intent: bot_challenge
+  examples: |
+    - bạn là ai?
+    - tôi đang nói chuyện với ai?
+    - who are you?
+    - bạn có phải con người không
+- regex: no_pid
+  examples: |
+    - \d{9}

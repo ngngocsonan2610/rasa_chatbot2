@@ -1,0 +1,47 @@
+version: "2.0"
+stories:
+- story: ask_pnr
+  steps:
+  - intent: user_greet
+  - action: utter_greet
+  - intent: ask_pnr
+  - action: utter_request_pnr
+  - active_loop: no_pnr_form
+- story: ask_pid
+  steps:
+  - intent: user_greet
+  - action: utter_greet
+  - intent: ask_pid
+  - action: utter_request_pid
+  - active_loop: no_pid_form
+- story: Story from Conversation ID 112f13a90a884bf7bf9452a1c0654470
+  steps:
+  - action: utter_greet
+  - intent: user_greet
+  - slot_was_set:
+    - no_pnr: 1A2B3C
+  - intent: ask_pnr
+  - slot_was_set:
+    - no_pnr: 1A2B3C
+  - action: utter_happy
+  - intent: user_greet
+  - action: utter_greet
+  - intent: ask_pnr
+  - action: utter_request_pnr
+  - slot_was_set:
+    - no_pnr: A1B2C3
+  - intent: inform_pnr
+    entities:
+    - no_pnr: A1B2C3
+  - action: action_resp_input
+  - slot_was_set:
+    - no_pnr: null
+  - action: utter_is_good
+  - intent: user_deny
+  - action: utter_sr
+  - intent: mood_unhappy
+  - action: utter_howareyou
+  - action: utter_cheer_up
+  - action: utter_is_good
+  - intent: user_affirm
+  - action: utter_happy
